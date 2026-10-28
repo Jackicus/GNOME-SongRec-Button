@@ -17,7 +17,7 @@ the song your computer is playing.
 
 ## Requirements
 
-- GNOME Shell 50, on PipeWire (most distributions use it by default).
+- GNOME Shell 51, on PipeWire (most distributions use it by default).
 - [SongRec](https://github.com/marin-m/SongRec), which does the recognition. Install your
   distribution's package, not the Flatpak, which does not provide the `songrec` command.
 

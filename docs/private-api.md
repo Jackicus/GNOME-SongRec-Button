@@ -1,7 +1,7 @@
 # Private shell API
 
 What SongRec Button relies on that GNOME Shell does not offer as API, checked against
-Shell 50's `ui/quickSettings.js` and `ui/popupMenu.js`. Each entry says what breaks when
+Shell 51.1's `ui/quickSettings.js` and `ui/popupMenu.js`. Each entry says what breaks when
 the shell changes it.
 
 ## The history's `_delegate`
