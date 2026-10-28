@@ -9,21 +9,30 @@ description: See SongRec Button in a throwaway nested GNOME Shell - its quick se
 steps and its settings are there. This is what is particular to SongRec Button.
 
 ```bash
-G="./scripts/nested.sh run timeout 5 gsettings --schemadir src/schemas"   # then: $G set org.gnome.shell.extensions.songrec-button KEY VALUE
 ./scripts/nested.sh start --headless     # SongRec Button is ACTIVE when it returns
-./scripts/nested.sh do "click 1540 16" "wait 1" "click 1557 276" "wait 1" "shot $S/menu.png 1100 0 500 600"
+./scripts/nested.sh run timeout 5 gsettings --schemadir src/schemas set org.gnome.shell.extensions.songrec-button click-action copy
+./scripts/nested.sh do "click 1540 16" "wait 1" "click 1557 285" "wait 1" "shot $S/menu.png 1100 0 500 600"
 ./scripts/nested.sh stop
 ```
 
-In zsh, `$G` does not word-split: write the command out.
+Settings are always that `run timeout 5 gsettings` line written out: a command kept in a
+variable (`$G set …`) does not word-split in zsh.
 
 ## Where things are (1600x900, one monitor)
 
 - **Quick settings**: open them at about (1540, 16). A `do` that ends with them open leaves
   them open for the next, so a second click there closes them.
-- **The pill**: "SongRec", bottom right of the toggles, about (1420, 276); clicking it
-  starts and stops a recognition. **Its arrow**, about (1557, 276), opens the history
-  below it; each song's × is at its right edge, about x 1532, and Settings is last.
+- **The pill**: "SongRec", bottom right of the toggles; clicking it starts and stops a
+  recognition. Where it sits depends on the look: about (1480, 276) under a plain `start` or
+  `--clean` (the real session's look), about (1460, 290) under `--stand-in` (the default
+  look). **(1480, 285) hits it in both**; x 1400 is Do Not Disturb. **Its arrow** is at x
+  1557 on the same row ((1557, 285) in both) and opens the history below it; each song's ×
+  is at its right edge, about x 1532, and Settings is last. Another look (fonts, scale)
+  moves them again: with quick settings open, `shot $S/qs.png 1000 0 600 450` and read
+  where the pill is before clicking.
+- **A real recording** (not the stand-ins) adds the shell's microphone slider under the
+  volume one, which moves the toggles down: the pill is then about (1480, 314).
+- **Escape** closes the history first and quick settings with a second press.
 - **While listening** its icon (a note) shows in the top bar, left of the network icon.
 
 ## Before clicking
@@ -32,6 +41,9 @@ In zsh, `$G` does not word-split: write the command out.
   real desktop.
 - **A recognition is real**: `pw-record` records the machine's own output (or the `device` chosen)
   and SongRec sends its fingerprint to Shazam. With nothing playing it is "No Match".
+- **Under `--stand-in` a recognition always fails** ("pw-record: stopped early"): its
+  `pw-record` and `songrec` exit at once, for screenshots. For one, use the stand-ins below
+  with a plain `start`.
 
 ## A real match without playing sound
 
@@ -59,8 +71,10 @@ Kevin MacLeod's tracks on incompetech.com (CC BY) are in Shazam's catalogue.
 
 ## History without recognizing
 
-`$G set … history "[{'key': '1', 'title': 'T', 'artist': 'A', 'cover': '', 'url': '', 'time': '1791187280'}]"`
-fills the history.
+```bash
+./scripts/nested.sh run timeout 5 gsettings --schemadir src/schemas set org.gnome.shell.extensions.songrec-button \
+    history "[{'key': '1', 'title': 'T', 'artist': 'A', 'cover': '', 'url': '', 'time': '1791187280'}]"
+```
 
 ## Screenshots
 
