@@ -2,7 +2,7 @@
 
 Shared rules for every extension come from gnome-ai-kit: `../CLAUDE.md` and `../.claude/rules/` (loaded with this file), and the `gnome-ext:*` skills. `.claude/kit.sh` pulls the kit at session start, or, with no kit beside this repository, fetches it and prints its rules into the session.
 
-A GNOME Shell extension (UUID `songrec-button@jackicus`, `version-name` 0.1.1, shell 50): a
+A GNOME Shell extension (UUID `songrec-button@jackicus`, `version-name` 0.1.1, shell 51): a
 quick settings button that runs SongRec to recognize the song the computer is playing.
 
 One place: a pill in quick settings (`QuickMenuToggle`, added with `addExternalIndicator`).
@@ -33,6 +33,7 @@ src/schemas/            org.gnome.shell.extensions.songrec-button
 src/stylesheet.css      the history's height, the song rows
 docs/publishing.md      how the extensions.gnome.org review is answered
 docs/private-api.md     the shell internals it relies on, and what breaks when they move
+docs/compatibility.md   the shell versions read and booted, and what changed
 scripts/ext.conf        what the kit's scripts need to know about this extension
 scripts/nested.d/       the stand-in songs and 'nested.sh shots' (the README's screenshots)
 ```
