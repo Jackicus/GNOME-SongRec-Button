@@ -5,7 +5,7 @@ description: See SongRec Button in a throwaway nested GNOME Shell - its quick se
 
 # Driving SongRec Button in a nested shell
 
-**Read `gnome-ext:nested-shell` first**: the loop (`start`, `do`, `reload`, `stop`), the
+**Read `nested-shell` first**: the loop (`start`, `do`, `reload`, `stop`), the
 steps and its settings are there. This is what is particular to SongRec Button.
 
 ```bash
@@ -82,4 +82,4 @@ Kevin MacLeod's tracks on incompetech.com (CC BY) are in Shazam's catalogue.
 `docs/screenshots/quick-settings.png` (`scripts/nested.d/shots.sh`), under `start --stand-in`: invented songs
 with covers drawn by `scripts/nested.d/stand-in.sh`, and `songrec` and `pw-record` as
 stand-ins (`EXT_STAND_IN_BINS`), so nothing is recorded or sent. Without `oxipng`, strip
-them with `magick IN -strip OUT`. Then the checks in `gnome-ext:screenshots`.
+them with `magick IN -strip OUT`. Then the checks in `screenshots`.
